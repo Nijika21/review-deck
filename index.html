@@ -120,6 +120,13 @@ a{color:inherit;}
   box-shadow:var(--shadow);cursor:zoom-in;
 }
 .shot-frame img{border-radius:0;}
+.shot-frame.crop-preview{max-height:520px;}
+.shot-frame.crop-preview::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:110px;
+  background:linear-gradient(to bottom, rgba(244,247,251,0), var(--navy-50) 88%);
+  pointer-events:none;
+}
+.card .shot-frame.crop-preview::after{background:linear-gradient(to bottom, rgba(255,255,255,0), #fff 88%);}
 .shot-cap{font-size:12.5px;color:var(--ink-soft);margin-top:8px;text-align:center;}
 .shot-link{
   display:inline-flex;align-items:center;gap:5px;margin-top:6px;
@@ -357,8 +364,8 @@ footer{padding:40px 0 60px;text-align:center;color:var(--ink-soft);font-size:12.
           <p class="shot-link-row"><a class="shot-link" href="https://ganiworks.my.id/#galeri" target="_blank" rel="noopener">Lihat halaman asli ↗</a></p>
         </div>
         <div class="shot">
-          <div class="shot-frame"><img src="/shots/cv-galeri-penuh.webp" alt="Halaman galeri penuh CV" loading="lazy"></div>
-          <p class="shot-cap">Halaman "Lihat Semua Foto" — grid galeri penuh.</p>
+          <div class="shot-frame crop-preview"><img src="/shots/cv-galeri-penuh.webp" alt="Halaman galeri penuh CV" loading="lazy"></div>
+          <p class="shot-cap">Halaman "Lihat Semua Foto" — cuplikan bagian atas grid (aslinya berlanjut jauh lebih panjang berisi puluhan foto contoh). Klik gambar untuk lihat tangkapan layar penuh.</p>
           <p class="shot-link-row"><a class="shot-link" href="https://ganiworks.my.id/gallery" target="_blank" rel="noopener">Lihat halaman asli ↗</a></p>
         </div>
       </div>
