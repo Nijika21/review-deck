@@ -100,6 +100,29 @@ a{color:inherit;}
 .badge-shared{background:var(--navy-100);color:var(--navy-700);}
 .badge-planned{background:#fff4e0;color:#966400;}
 .section-kicker{font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);}
+.section-kicker.kicker-cv{color:var(--cv-accent-dark);}
+.section-kicker.kicker-pt{color:#7a5300;}
+
+.company-hero{padding:38px 0 30px;}
+.company-hero .wrap p{margin-bottom:0;}
+.company-hero.cv-hero{
+  background:linear-gradient(135deg,var(--cv-tint) 0%,#fdf6f5 55%,var(--navy-50) 100%);
+  border-bottom:3px solid var(--cv-accent);
+}
+.company-hero.pt-hero{
+  background:linear-gradient(135deg,var(--pt-bg) 0%,#221b0f 100%);
+  border-bottom:3px solid var(--pt-gold);
+}
+.company-hero.cv-hero .badge-cv{background:#fff;box-shadow:0 2px 6px rgba(192,69,63,0.18);}
+.company-hero h2{font-size:clamp(26px,4vw,34px);margin-bottom:12px;}
+.company-hero.cv-hero h2{color:var(--cv-accent-dark);}
+.company-hero.pt-hero h2{color:var(--pt-gold);}
+.company-hero.pt-hero .section-kicker{color:#b0a074;}
+.company-hero.pt-hero p{color:#d7d0ba;}
+
+.section-title-row > .kicker-block{border-left:3px solid transparent;padding-left:12px;}
+.section-title-row > .kicker-block.accent-cv{border-left-color:var(--cv-accent);}
+.section-title-row > .kicker-block.accent-pt{border-left-color:var(--pt-gold);}
 
 .card{
   background:#fff;border:1px solid var(--line);border-radius:var(--radius);
@@ -300,15 +323,20 @@ footer{padding:40px 0 60px;text-align:center;color:var(--ink-soft);font-size:12.
   </div>
 </section>
 
-<section class="section" id="cv">
-  <div class="wrap">
+<section class="section" id="cv" style="padding-top:0;">
 
-    <div class="eyebrow-row">
-      <span class="badge badge-cv">CV. Mitra Agung Teknik</span>
-      <span class="section-kicker">Bagian 1 dari 2 perusahaan</span>
+  <div class="company-hero cv-hero">
+    <div class="wrap">
+      <div class="eyebrow-row">
+        <span class="badge badge-cv">CV. Mitra Agung Teknik</span>
+        <span class="section-kicker">Bagian 1 dari 2 perusahaan</span>
+      </div>
+      <h2>CV. Mitra Agung Teknik</h2>
+      <p>Perusahaan yang baru berjalan sekitar 3 bulan, masih membangun sistem kerja, identitas, dan portofolionya. Karena masih muda, perusahaan ini sengaja menjaga posisi <strong>"low profile"</strong> — tidak mengklaim nama klien secara sepihak, dan tidak menampilkan angka-angka yang belum bisa dipastikan (jumlah proyek, omzet, jumlah karyawan, dsb).</p>
     </div>
-    <h2>CV. Mitra Agung Teknik</h2>
-    <p>Perusahaan yang baru berjalan sekitar 3 bulan, masih membangun sistem kerja, identitas, dan portofolionya. Karena masih muda, perusahaan ini sengaja menjaga posisi <strong>"low profile"</strong> — tidak mengklaim nama klien secara sepihak, dan tidak menampilkan angka-angka yang belum bisa dipastikan (jumlah proyek, omzet, jumlah karyawan, dsb).</p>
+  </div>
+
+  <div class="wrap">
 
     <div class="statrow">
       <div class="stat"><div class="num">3</div><div class="lbl">Bagian website<span class="stat-sub">Umum, Admin, Superadmin</span></div></div>
@@ -331,8 +359,8 @@ footer{padding:40px 0 60px;text-align:center;color:var(--ink-soft);font-size:12.
     <div class="divider"></div>
 
     <div class="section-title-row">
-      <div>
-        <span class="section-kicker">CV &middot; Bagian A</span>
+      <div class="kicker-block accent-cv">
+        <span class="section-kicker kicker-cv">CV &middot; Bagian A</span>
         <h3 style="margin-top:4px;">Tampilan Website</h3>
       </div>
     </div>
@@ -396,8 +424,8 @@ footer{padding:40px 0 60px;text-align:center;color:var(--ink-soft);font-size:12.
     <div class="divider"></div>
 
     <div class="section-title-row">
-      <div>
-        <span class="section-kicker">CV &middot; Bagian B</span>
+      <div class="kicker-block accent-cv">
+        <span class="section-kicker kicker-cv">CV &middot; Bagian B</span>
         <h3 style="margin-top:4px;">Sistem Pengelolaan &amp; Hak Akses</h3>
       </div>
     </div>
@@ -513,15 +541,20 @@ footer{padding:40px 0 60px;text-align:center;color:var(--ink-soft);font-size:12.
   </div>
 </section>
 
-<section class="section" id="pt">
-  <div class="wrap">
+<section class="section" id="pt" style="padding-top:0;">
 
-    <div class="eyebrow-row">
-      <span class="badge badge-pt">PT Mitra Agung Elektrindo</span>
-      <span class="section-kicker">Bagian 2 dari 2 perusahaan</span>
+  <div class="company-hero pt-hero">
+    <div class="wrap">
+      <div class="eyebrow-row">
+        <span class="badge badge-pt">PT Mitra Agung Elektrindo</span>
+        <span class="section-kicker">Bagian 2 dari 2 perusahaan</span>
+      </div>
+      <h2>PT Mitra Agung Elektrindo</h2>
+      <p>Website profil perusahaan dua bahasa (Indonesia &amp; Inggris): memperkenalkan perusahaan, menampilkan katalog panel &amp; komponen listrik, memperlihatkan rekam jejak proyek, dan memudahkan calon pembeli langsung menghubungi lewat WhatsApp. Seluruh tulisan sudah memakai isi sungguhan dari Company Profile perusahaan — bukan karangan.</p>
     </div>
-    <h2>PT Mitra Agung Elektrindo</h2>
-    <p>Website profil perusahaan dua bahasa (Indonesia &amp; Inggris): memperkenalkan perusahaan, menampilkan katalog panel &amp; komponen listrik, memperlihatkan rekam jejak proyek, dan memudahkan calon pembeli langsung menghubungi lewat WhatsApp. Seluruh tulisan sudah memakai isi sungguhan dari Company Profile perusahaan — bukan karangan.</p>
+  </div>
+
+  <div class="wrap">
 
     <div class="statrow">
       <div class="stat"><div class="num">8</div><div class="lbl">Halaman<span class="stat-sub">untuk pengunjung</span></div></div>
@@ -541,8 +574,8 @@ footer{padding:40px 0 60px;text-align:center;color:var(--ink-soft);font-size:12.
     <div class="divider"></div>
 
     <div class="section-title-row">
-      <div>
-        <span class="section-kicker">PT &middot; Bagian A</span>
+      <div class="kicker-block accent-pt">
+        <span class="section-kicker kicker-pt">PT &middot; Bagian A</span>
         <h3 style="margin-top:4px;">Tampilan &amp; Isi Website</h3>
       </div>
     </div>
@@ -624,8 +657,8 @@ footer{padding:40px 0 60px;text-align:center;color:var(--ink-soft);font-size:12.
     <div class="divider"></div>
 
     <div class="section-title-row">
-      <div>
-        <span class="section-kicker">PT &middot; Bagian B</span>
+      <div class="kicker-block accent-pt">
+        <span class="section-kicker kicker-pt">PT &middot; Bagian B</span>
         <h3 style="margin-top:4px;">Data Perusahaan yang Perlu Dipastikan</h3>
       </div>
     </div>
@@ -677,8 +710,8 @@ footer{padding:40px 0 60px;text-align:center;color:var(--ink-soft);font-size:12.
     <div class="divider"></div>
 
     <div class="section-title-row">
-      <div>
-        <span class="section-kicker">PT &middot; Bagian C</span>
+      <div class="kicker-block accent-pt">
+        <span class="section-kicker kicker-pt">PT &middot; Bagian C</span>
         <h3 style="margin-top:4px;">Sistem Pengelolaan &amp; Hak Akses (Rencana)</h3>
       </div>
     </div>
