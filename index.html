@@ -172,6 +172,14 @@ a{color:inherit;}
 .note.warn{background:#fff4e0;border-color:var(--pt-gold);color:#7a5300;}
 .note.cv{background:var(--cv-tint);border-color:var(--cv-accent);color:var(--cv-accent-dark);}
 
+.email-autofill-row{display:flex;gap:10px;align-items:center;margin-top:8px;flex-wrap:wrap;}
+#reviewEmail{
+  flex:1;min-width:220px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;
+  font-size:14px;font-family:inherit;color:var(--navy-900);background:#fff;
+}
+#reviewEmail:focus{outline:2px solid var(--navy-500);outline-offset:1px;}
+.email-autofill-status{font-size:12.5px;color:var(--navy-700);font-weight:700;white-space:nowrap;}
+
 .shot{margin:18px 0;}
 .shot-frame{
   position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);
@@ -383,6 +391,14 @@ footer{padding:40px 0 60px;text-align:center;color:var(--ink-soft);font-size:12.
       <p>Saat ini kedua project website — CV. Mitra Agung Teknik dan PT Mitra Agung Elektrindo — masih ada banyak alur dan detail yang perlu dikonfirmasi langsung ke Bapak. Karena kesibukan Bapak membuat sulit mencari waktu diskusi langsung, halaman ini dibuat sebagai pengganti presentasi tatap muka: seluruh konteks dijelaskan di sini, dan setiap bagian punya tombol tanggapan sendiri yang bisa diisi kapan saja.</p>
       <div class="note">
         <strong>Cara pakai:</strong> scroll ke bawah seperti membaca artikel biasa. Tiap bagian membahas satu topik, disertai contoh tampilan asli dan daftar pertanyaan singkat. Di akhir tiap bagian ada tombol <em>"Isi Tanggapan"</em> — tekan untuk membuka formulir singkat khusus bagian itu. Jawaban otomatis tercatat rapi, tidak perlu membalas satu per satu lewat chat.
+      </div>
+      <div class="note">
+        <strong>Isi email sekali di sini, otomatis terisi di ke-7 form tanggapan</strong> — supaya tidak perlu ketik ulang di tiap form.
+        <div class="email-autofill-row">
+          <input type="email" id="reviewEmail" placeholder="email@contoh.com" autocomplete="email">
+          <span class="email-autofill-status" id="reviewEmailStatus"></span>
+        </div>
+        <p class="shot-cap" style="text-align:left;margin-top:6px;">Opsional. Disimpan hanya di browser ini (localStorage), belum terkirim ke mana pun sampai salah satu form ditekan submit. Tiap form tetap bisa diedit manual kalau perlu email lain.</p>
       </div>
       <div class="note cv">
         <strong>Catatan konten CV. Mitra Agung Teknik:</strong> seluruh tulisan yang tampil di website CV saat ini masih teks sementara (placeholder) — termasuk deskripsi layanan dan nama-nama "Jasa 1, Jasa 2", dst. Yang perlu ditinjau di bagian CV adalah <strong>alur dan strukturnya</strong>, bukan pilihan katanya. Tulisan sebenarnya disusun setelah struktur ini disetujui.
@@ -1013,6 +1029,38 @@ function syncFlowHints(){
 }
 window.addEventListener('resize', syncFlowHints);
 syncFlowHints();
+
+// Fill email once here, auto-carry it into all 7 Jotform links via URL prefill.
+(function(){
+  const KEY = 'reviewDeckEmail';
+  const input = document.getElementById('reviewEmail');
+  const status = document.getElementById('reviewEmailStatus');
+  const links = document.querySelectorAll('.btn-feedback');
+  if(!input) return;
+
+  function applyEmail(email){
+    links.forEach(a=>{
+      try{
+        const url = new URL(a.getAttribute('href'), location.href);
+        if(email){ url.searchParams.set('alamatEmail', email); }
+        else{ url.searchParams.delete('alamatEmail'); }
+        a.href = url.toString();
+      }catch(e){}
+    });
+  }
+
+  const saved = localStorage.getItem(KEY) || '';
+  input.value = saved;
+  applyEmail(saved);
+  if(saved) status.textContent = '✓ tersimpan';
+
+  input.addEventListener('input', ()=>{
+    const val = input.value.trim();
+    localStorage.setItem(KEY, val);
+    applyEmail(val);
+    status.textContent = val ? '✓ tersimpan' : '';
+  });
+})();
 </script>
 </body>
-                                                                                                                                      </html>
+</html>
